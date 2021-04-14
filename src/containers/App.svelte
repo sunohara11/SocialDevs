@@ -6,9 +6,19 @@
 </script>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
     :global(body){
-        background-color: antiquewhite;
-        color: black;
+        background-color: #fafafa;
+        color: rgba(38,38,38, 0.7);
+        font-family: 'Francois One' ;
+        margin: 0;
+        padding: 0;
+    }
+    :global(h1, h2,h3){
+        margin: 0;
+        padding: 0;
     }
 </style>
 
