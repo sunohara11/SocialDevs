@@ -1,5 +1,6 @@
 <script>
-
+ export let nickname;
+ export let name;
 </script>
 
 <!-- Profile.svelte -->
@@ -36,8 +37,8 @@
             <img src="" alt="">
         </div>
         <div class="Profile-info">
-            <h2>Sunohara11</h2>
-            <span>Carlos Cordova</span>
+            <h2>{nickname}</h2>
+            <span>{name}</span>
         </div>
     </div>
 </div>
