@@ -1,5 +1,5 @@
 <script>
-
+  import {likeCount} from "../store/store";
 </script>
 
 <!-- Header.svelte -->
@@ -73,6 +73,7 @@
                 <ul>
                     <li>
                         <i class="fas fa-laptop-code"/>
+                        {$likeCount===0?'': $likeCount}
                     </li>
                     <li>
                         <i class="fas fa-user-alt"/>

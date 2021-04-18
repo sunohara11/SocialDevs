@@ -2,7 +2,10 @@
     import Comments from "./Comments.svelte";
     import Modal from "./Modal.svelte";
     import Share from "./Share.svelte";
+
     import {blur} from 'svelte/transition';
+
+    import {likeCount} from "../store/store";
 
     export let username;
     export let location;
@@ -11,12 +14,27 @@
     export let comments;
     export let avatar;
 
-
     let isModal = false;
+    let like = false;
+    let bookmark= false;
 
     function handleClickModal(){
       isModal= !isModal;
     }
+
+    function handleClickLike(){
+      like = !like;
+      if(like){
+        likeCount.update(n=> n+1)
+      }else{
+        likeCount.update(n=> n-1);
+      }
+    }
+
+    function handleClickBookmark(){
+      bookmark = !bookmark;
+    }
+
 </script>
 
 <!-- Card.svelte -->
@@ -159,17 +177,24 @@
             </div>
         </div>  
         <div class="Card-photo">
-            <figure>
+            <figure on:dblclick={handleClickLike}>
                 <img src={photo} alt={username}>
             </figure>
         </div>
         <div class="Card-icons">
             <div class="Card-icons-first">
-                <i class="far fa-heart"></i>
-                <i class="fas fa-paper-plane" on:click={handleClickModal}/>
+                <i class="far fa-heart"
+                  class:active-like={like}
+                  on:click={handleClickLike}></i>
+                <i class="fas fa-paper-plane" 
+                on:click={handleClickModal}/>
             </div>
             <div class="Card-icons-second">
-                <i class="fas fa-bookmark"/>
+              <!-- Haciendo el evento de forma directa en el elemento -->
+                <i class="fas fa-bookmark"
+                  class:active-bookmark={bookmark}
+                  on:click={() =>(bookmark= !bookmark)}
+                />
             </div>
         </div>
         <div class="Card-description">
